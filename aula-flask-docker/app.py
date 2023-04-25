@@ -20,10 +20,11 @@ def index():
 
 @app.route('/forms', methods=['GET','POST'])
 def form():
-    nome = request.form["nome"]
+    nome = request.form['nome']
+    print(nome)
     email = request.form['email']
     senha = request.form['senha']
-    if nome and email and senha:
+    if email and senha:
         conn = mysql.connect()
         cursor = conn.cursor()
         cursor.execute('insert into tbl_user (user_name, user_username, user_password) VALUES (%s, %s, %s)', (nome, email, senha))
